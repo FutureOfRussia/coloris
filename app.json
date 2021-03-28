@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "rn-skeleton",
-    "slug": "rn-skeleton",
+    "name": "coloris",
+    "slug": "coloris",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "rn-skeleton",
+    "scheme": "coloris",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",

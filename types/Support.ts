@@ -20,5 +20,3 @@ export interface ThemeProps {
   lightColor?: string
   darkColor?: string
 }
-
-export type Notification = { msg: string; action?: () => void; actionLabel?: string }

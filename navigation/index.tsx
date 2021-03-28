@@ -1,6 +1,6 @@
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
-import { ActivityIndicator, ColorSchemeName } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { ActivityIndicator, View } from 'react-native'
 import * as Localization from 'expo-localization'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -8,28 +8,17 @@ import * as React from 'react'
 
 import LinkingConfiguration from '../helpers/LinkingConfiguration'
 import { RootStackParamList } from '../types/Navigation'
-import BottomTabNavigator from './BottomTabNavigator'
-import { useTerms, useThemeColor } from '../hooks'
+import { Colors, Styles } from '../constants'
 import { Dispatch } from '../types/Models'
-import { NotFound } from '../screens'
-import { Styles } from '../constants'
-import { View } from '../components'
+import { Main } from '../screens'
 
 const Stack = createStackNavigator<RootStackParamList>()
 
-export default function Navigation({
-  colorScheme,
-  isLoadingComplete,
-}: {
-  colorScheme: ColorSchemeName
-  isLoadingComplete: boolean
-}): JSX.Element {
+export default function Navigation({ isLoadingComplete }: { isLoadingComplete: boolean }): JSX.Element {
   const {
     appState: { setAppState },
   } = useDispatch<Dispatch>()
   const [loading, setLoading] = useState(false)
-  const tintColor = useThemeColor({}, 'tint')
-  const { titles } = useTerms()
 
   useEffect(() => {
     ;(async () => {
@@ -42,15 +31,14 @@ export default function Navigation({
   }, [setAppState])
 
   return (
-    <NavigationContainer linking={LinkingConfiguration} theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <NavigationContainer linking={LinkingConfiguration}>
       {isLoadingComplete && !loading ? (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Root" component={BottomTabNavigator} />
-          <Stack.Screen name="NotFound" component={NotFound} options={{ title: titles.notFound }} />
+          <Stack.Screen name="Main" component={Main} />
         </Stack.Navigator>
       ) : (
         <View style={[Styles.fullFlex, Styles.centered]}>
-          <ActivityIndicator size="large" color={tintColor} />
+          <ActivityIndicator size="large" color={Colors.LINK} />
         </View>
       )}
     </NavigationContainer>

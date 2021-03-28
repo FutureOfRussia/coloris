@@ -17,7 +17,8 @@ export default StyleSheet.create({
     width: '100%',
     borderRadius: px(15),
     borderWidth: px(1),
-    borderColor: Colors.WHITE,
+    borderColor: Colors.BLACK,
+    backgroundColor: Colors.WHITE,
     ...shadow(),
   },
   textBlock: {
@@ -38,7 +39,7 @@ export default StyleSheet.create({
     width: '100%',
     height: px(50),
     borderTopWidth: px(1),
-    borderColor: Colors.WHITE,
+    borderColor: Colors.BLACK,
   },
   button: {
     width: '100%',

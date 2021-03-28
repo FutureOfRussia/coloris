@@ -1,4 +1,5 @@
 import * as SplashScreen from 'expo-splash-screen'
+import { Ionicons } from '@expo/vector-icons'
 import { useState, useEffect } from 'react'
 import { Asset } from 'expo-asset'
 import * as Font from 'expo-font'
@@ -12,7 +13,7 @@ export default function useCachedResources(): boolean {
     const loadResourcesAndDataAsync = async () => {
       try {
         await SplashScreen.preventAutoHideAsync()
-        await Font.loadAsync({ 'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf') })
+        await Font.loadAsync({ ...Ionicons.font })
         await Asset.loadAsync(Images.list)
       } catch (e) {
         console.log(e)

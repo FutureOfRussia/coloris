@@ -15,3 +15,6 @@ export const shadow = ({ shadowColor, shadowOffset, shadowRadius, shadowOpacity,
   shadowOpacity: shadowOpacity || 0.5,
   elevation: elevation || 10,
 })
+
+export const getRandomIntInclusive = (min: number, max: number) =>
+  Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min)
